@@ -1,0 +1,90 @@
+version: '3.8'
+services:
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+  mongodb:
+    image: 'mongo:latest'
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+  dbclient:
+    image: mongo
+    ports:
+      - 30001:27017
+    volumes:
+      - dbclients:/data/db
+  dbemprunts:
+    image: mongo
+    ports:
+      - 30003:27017
+    volumes:
+      - dbemprunts:/data/db
+  dblivre:
+    image: mongo
+    ports:
+      - 30003:27017
+    volumes:
+      - dblivres:/data/db
+  client:
+    build: ../backend/api-client
+    ports:
+      - 3001:3000
+    environment:
+      - port=3001
+      - url_mongoose=mongodb://dbclients:27017/dbclient
+    depends_on:
+      - dbclients
+      - mongodb
+  emprunt:
+    build: ../backend/api-emprunt
+    ports:
+      - 3003:3000
+    environment:
+      - port=3003
+      - url_mongoose=mongodb://dbemprunts:27017/dbemprunt
+    depends_on:
+      - dbemprunts
+      - mongodb
+  notification_service:
+    build:
+      context: ./API_Notification
+    ports:
+      - '3001:3001'
+    environment:
+      - RABBITMQ_URL=amqp://hafsa:123456@rabbitmq:5672
+      - MONGO_URL=mongodb://mongodb:27017/Notifications
+      - MY_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - MY_USERNAME=hafssa.zian96@gmail.com
+      - MY_PASSWORD=zfzajnvpoezvgmdl
+    depends_on:
+      - rabbitmq
+      - mongodb
+  livre_service:
+    build:
+      context: ./API_Livre
+    ports:
+      - '3002:3000'
+    environment:
+      - RABBITMQ_URL=amqp://user:password@rabbitmq:5672
+      - MONGO_URL=mongodb://mongodb:27017/dblivre
+    depends_on:
+      - rabbitmq
+      - mongodb
+  gateway:
+    image: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - notification_service
+      - livre_service
+    volumes:
+      - ./gateway/default.conf:/etc/nginx/conf.d/default.conf
+volumes:
+  dbclients:
+  dbemprunts:
+  dblivres:
