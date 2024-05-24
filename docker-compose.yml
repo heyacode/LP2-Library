@@ -55,12 +55,12 @@ services:
     ports:
       - '3001:3001'
     environment:
-      - RABBITMQ_URL=amqp://hafsa:123456@rabbitmq:5672
+      - RABBITMQ_URL=amqp://user:password@rabbitmq:5672
       - MONGO_URL=mongodb://mongodb:27017/Notifications
       - MY_HOST=smtp.gmail.com
       - SMTP_PORT=587
-      - MY_USERNAME=hafssa.zian96@gmail.com
-      - MY_PASSWORD=zfzajnvpoezvgmdl
+      - MY_USERNAME=test
+      - MY_PASSWORD=zfzajnvpoezvg
     depends_on:
       - rabbitmq
       - mongodb
