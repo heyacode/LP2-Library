@@ -28,24 +28,22 @@ const Clients = () => {
       <div className='tab-cl'>
         <table className='table'>
           <tr>
-            <td colspan="3"><h2 className='h2'>Liste des Clients</h2></td>
-            <td><button className='ajt'><Link to="/clients/nouveau" className='link'>Ajouter un Nouveau Client</Link></button></td></tr>
+            <td colspan="3"><h2 className='h2'>Readers List</h2></td>
+            <td><button className='ajt'><Link to="/clients/nouveau" className='link'>Add a new reader</Link></button></td></tr>
           <tr >
-            <th>Nom</th>
-            <th>Prenom</th>
+            <th>Full Name</th>
             <th>Email</th>
             <th>Action</th>
           </tr>
           {clients.map(client => (
             <tr className='tr'>
-              <td>{client.nom}</td>
-              <td>{client.prenom}</td>
+              <td>{client.nom} {client.prenom}</td>
               <td>{client.email}</td>
               <td>
                 <Link to={`/clients/${client._id}/editer`}>
-                  <button className='button-3'>Modifier</button>
+                  <button className='button-3'>Edit</button>
                 </Link>
-                <button onClick={() => handleDelete(client._id)} className='button-4'>Supprimer</button>
+                <button onClick={() => handleDelete(client._id)} className='button-4'>Delete</button>
               </td>
             </tr>
           ))}
