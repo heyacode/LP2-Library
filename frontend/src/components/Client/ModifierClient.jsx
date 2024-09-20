@@ -30,23 +30,44 @@ const EditerClient = () => {
     <div>
       
       <form onSubmit={handleSubmit} className='form-client'>
-      <h1>Editer Client</h1>
-        <div className='dv'>
-            <label htmlFor="nom">Nom :</label>
-            <input type="text" name="nom" value={client.nom} onChange={handleChange}  placeholder='Nom'/>
-        </div>
-        <div className='dv'>
-          <label htmlFor="prenom">Prenom :</label>
-          <input type="text" name="prenom" value={client.prenom} onChange={handleChange} placeholder='Prenom'/>
-        </div>
-        <div className='dv'> 
+    <h2>Edit Reader :{client.nom} {client.prenom}</h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <label htmlFor="prenom">First Name :</label>
+        </td>
+        <td>
+          <input type="text" name="prenom" value={client.prenom} onChange={handleChange} placeholder='First Name' />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label htmlFor="nom">Last Name :</label>
+        </td>
+        <td>
+          <input type="text" name="nom" value={client.nom} onChange={handleChange} placeholder='Last Name' />
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
           <label htmlFor="email">Email :</label>
-          <input type="email" name="email" value={client.email} onChange={handleChange}  placeholder='Email'/>
-        </div>
-       
-       
-        <button type="submit" className='ajt'>Enregister</button>
-      </form>
+        </td>
+        <td>
+          <input type="email" name="email" value={client.email} onChange={handleChange} placeholder='Email' />
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td colSpan={2}>
+        <button type="submit" className='ajt'>Save</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
     </div>
   );
 };

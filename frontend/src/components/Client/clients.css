@@ -1,11 +1,12 @@
 form{
   margin: 20px;
-  justify-content: center;
+  justify-content: left;
   padding: 30px;
-  border: 1px solid rgb(240, 243, 255);
-  border-radius: 50px;
-  text-align: center;
-  background-color: rgb(240, 243, 255);
+  border-radius: 8px;
+  text-align: left;
+  background-color: #ab7743;
+  font-size: x-large;
+  width: 700px;
 }
 h2{
   color: #f3e9dc;
@@ -17,11 +18,13 @@ h2{
 }
 
 input {
-  margin-left: 90px;
   padding: 10px;
-  width: 500px;
-  border-radius: 10px;
-  border-color: antiquewhite;
+  width: 300px;
+  height: 20px;
+  border-radius: 8px;
+  background-color: #f3e9dc;
+  color: #4c2b08;
+  border: none;
 }
 
 
@@ -49,6 +52,7 @@ input {
 }
 .ajt:hover {  
   background-color: #f3e9dc;
+  color: #4c2b08;
 }
 .link{
   text-decoration: none;
