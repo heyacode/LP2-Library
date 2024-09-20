@@ -42,7 +42,7 @@ routes.put("/update/:idclient", (req, res) => {
     const { nom, prenom, email } = req.body;
     ClientModel.updateOne({ _id: id }, { $set: { nom: nom, prenom: prenom, email: email } })
         .then((client) => {
-            return res.status(200).send(client);
+            return res.status(200).json(client);
         })
         .catch((err) => {
             return res.status(404).send("Client non trouvé");
