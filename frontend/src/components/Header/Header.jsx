@@ -7,23 +7,19 @@ export default function Header() {
   return (
     <div>
       <nav className='navbar' id="navbar">
-        <div className='container navbar-content flex'>
-          <div className={toggleMenu ? "navbar-collapse show-navbar-collapse" : "navbar-collapse"}>
             <ul className="navbar-nav">
             <li className='nav-item'>
-                <Link to="/" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Home</Link>
+                <Link to="/" className='nav-link'>Home</Link>
               </li>
               <li className='nav-item'>
-                <Link to="livres" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>livres</Link>
+                <Link to="livres" className='nav-link'>Books</Link>
               </li>
               <li className='nav-item'>
-                <Link to="emprunts" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>emprunt</Link>
+                <Link to="emprunts" className='nav-link'>Prints</Link>
               </li> <li className='nav-item'>
-                <Link to="clients" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>client</Link>
+                <Link to="clients" className='nav-link'>Clients</Link>
               </li>
             </ul>
-          </div>
-        </div>
       </nav>
     </div>
   )

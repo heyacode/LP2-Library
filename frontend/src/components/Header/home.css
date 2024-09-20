@@ -1,0 +1,28 @@
+body{
+background-color: #f3e9dc;
+}
+    
+.header-title{
+    font-size: 55px;
+    color: #4c2b08;
+    text-align: left;
+    justify-content: left;
+    padding-top: 80px;
+    padding-left: 22px;
+    text-transform: uppercase;
+
+}
+.header-text{
+    margin-top: -1.8rem;
+    margin-bottom: 2.8rem;
+    text-align: left;
+    padding-left: 30px;
+    font-size: x-large;
+    max-width: 770px;
+    justify-content: left;
+    color: #4c2b08;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
